@@ -40,7 +40,7 @@ def sadMemes (x):
     if x == 0:
         make_meme("Tries to Remove Swap File" , "Removes Actual File", "opencv_frame_0.png")
     elif x == 1:
-        make_meme("Too Busy Doing Database Project" , "Forgets Valentines Day", "opencv_frame_0.png")
+        make_meme("Puts dignity at stake and runs for the LX" , "Bus driver doesn't stop", "opencv_frame_0.png")
     elif x == 2:
         make_meme("Tries to Have a Social Life" , "Welcome to Data Structures","opencv_frame_0.png")
     elif x == 3:
@@ -63,7 +63,7 @@ def angerMemes (x):
     elif x == 2:
         make_meme("Eats unhealthy as a college student" , "Attends a Hackathon", "opencv_frame_0.png")
     elif x == 3:
-        make_meme("Tries to Meet Significant Other" , "Realize That You Are a CS Major", "opencv_frame_0.png")
+        make_meme("Tries to Meet Significant Other" , "Realizes That You Are a CS Major", "opencv_frame_0.png")
     elif x == 4:
         make_meme("Want to Take a Quick Nap" , "Oversleeps by 10 Hours", "opencv_frame_0.png")
 #    img = Image.open('opencv_frame_0.png')
@@ -75,10 +75,10 @@ def angerMemes (x):
 
 def joyMemes (x):
     if x == 0:
-        make_meme("Uses Python For the First Time" , "Successful ... Almost", "opencv_frame_0.png")
+        make_meme("When you open WebReg" , "and a CS class is open", "opencv_frame_0.png")
 
     elif x == 1:
-        make_meme("Cant Figure Out Some Code" , "Finds a Library", "opencv_frame_0.png")
+        make_meme("When you are waiting for the bus" , "and you end up right in front of the door", "opencv_frame_0.png")
     elif x == 2:
         make_meme("CS Know-it-all Takes Exam" , "Does Worse Than You", "opencv_frame_0.png")
     elif x == 3:
@@ -93,16 +93,15 @@ def joyMemes (x):
 #SurpriseMemes
 def surpriseMemes (x):
     if x == 0:
-        make_meme("Uses Python for the First time" , "Almost Successful", "opencv_frame_0.png")
-
+        make_meme("Stays up till 4 every night" , "Body is tired", "opencv_frame_0.png")
     elif x == 1:
         make_meme("Codes a Project" , "Code Compiles for the First time", "opencv_frame_0.png")
     elif x == 2:
         make_meme("Project 2 is Due Next Week" , "Project 3 is Assigned", "opencv_frame_0.png")
     elif x == 3:
-        make_meme("Scores 100 on Coding Interview" , "Rejected by Company", "opencv_frame_0.png")
+        make_meme("Scores 100% on Coding Interview" , "Rejected by Company", "opencv_frame_0.png")
     elif x == 4:
-        make_meme("Run Code for the First Time After Saving" , "No Compile Time Errors", "opencv_frame_0.png")
+        make_meme("Run Code for the First Time" , "No Compile Time Errors", "opencv_frame_0.png")
     #img = Image.open('opencv_frame_0.png')
     #img.show()
     #mg = Image.open('temp.png')
@@ -132,7 +131,7 @@ def detect_face2(path):
 
 
 
-
+    list = []
 
     for face in faces:
         sadnessfactor = 'sorrow: {}'.format(likelihood_name[face.sorrow_likelihood])
@@ -152,13 +151,11 @@ def detect_face2(path):
         list.append(changeEnumToValue(surprisefactor))
         #print(list)
 
-
-
-
         break
 
-
-
+    if len(list) == 0:
+        print("No face found!")
+        return "-1"
     check = list.index(max(list))
 
     if check == 0:
@@ -288,8 +285,9 @@ cv2.destroyAllWindows()
 main("opencv_frame_0.png", "face_image.png", 4)
 str2 = detect_face2("face_image.png")
 
+
 y = random.randint(0,4)
-print(y)
+#print(y)
 
 if str2 == "Sadness":
     #print("inhere")
@@ -306,8 +304,12 @@ elif str2 == "Unknown":
 #make all the files go to opencv_frame_0.png, or we can change in meme generator, to open whatever.
 
 
-img = Image.open('temp.png')
-img.show()
+if (str2 != "-1"):
+    img = Image.open('face_image.png')
+    img.show()
+
+    img = Image.open('temp.png')
+    img.show()
 #str = "Joy"
 
 
